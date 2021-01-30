@@ -14,15 +14,16 @@ require('./models/Book');
 require('./models/Cart');
 // require('./models/AdminBooks');
 const app = express();
+const PORT = process.env.PORT || 8000;
 app.use(cors({
   credentials: true,
-  origin: "http://localhost:3000"
+  origin: "https://still-chamber-88289.herokuapp.com"
 }));
-
+app.set('trust proxy', 1);
 app.use(
   session({
     secret: session_secret,
-    cookie: { maxAge: 1 * 60 * 60 * 1000 },
+    cookie: { maxAge: 1 * 60 * 60 * 1000, sameSite:'none',secure:true },
     resave: true,
     saveUninitialized:true
   })
