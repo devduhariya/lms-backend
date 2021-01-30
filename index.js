@@ -28,6 +28,7 @@ app.use(
     saveUninitialized:true
   })
 );
+app.use(express.static(path.join(__dirname, 'build')));
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || `mongodb+srv://sukhdev:123@lmsb.imlwf.mongodb.net/lmsb?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 
