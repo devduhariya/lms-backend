@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 const session = require("express-session");
 const session_secret = "ssshhh";
-
+var path = require("path");
 // IMPORT MODELS
 require('./models/Category');
 require('./models/User');
@@ -14,7 +14,7 @@ require('./models/Book');
 require('./models/Cart');
 // require('./models/AdminBooks');
 const app = express();
-const PORT = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 app.use(cors({
   credentials: true,
   origin: "https://still-chamber-88289.herokuapp.com"
@@ -25,7 +25,7 @@ app.use(
     secret: session_secret,
     cookie: { maxAge: 1 * 60 * 60 * 1000, sameSite:'none',secure:true },
     resave: true,
-    saveUninitialized:true
+    saveUninitialized:false
   })
 );
 app.use(express.static(path.join(__dirname, 'build')));
@@ -43,5 +43,5 @@ require('./routes/CartRoute')(app);
 require('./routes/UserRoute')(app);
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  console.log(`app running on port ${PORT}`)
+  console.log(`app running on port ${port}`)
 });
