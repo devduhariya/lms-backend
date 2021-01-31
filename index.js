@@ -17,7 +17,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 app.use(cors({
   credentials: true,
-  origin: "https://still-chamber-88289.herokuapp.com"
+  origin: "https://digitallibrarysystem.herokuapp.com"
 }));
 app.set('trust proxy', 1);
 app.use(
