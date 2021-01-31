@@ -36,7 +36,7 @@ module.exports = (app) => {
     });
 
     const isNullOrUndefined = (val) => val === null || val === undefined || val === '';
-    app.post('/add/book', AdminAuthMiddleware, AuthMiddleware, async(req, res) => {
+    app.post('/add/book', AdminAuthMiddleware, async(req, res) => {
         const newBook = req.body;
         // console.log('newBook: ', newBook);
         if (isNullOrUndefined(newBook.title) && isNullOrUndefined(newBook.author) && isNullOrUndefined(newBook.totalBook) && isNullOrUndefined(newBook.bookDes) && isNullOrUndefined(newBook.bookImg) && isNullOrUndefined(newBook.categoryId)) {
